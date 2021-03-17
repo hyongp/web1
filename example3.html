@@ -1,0 +1,95 @@
+<!doctype html>
+
+<html>
+
+	<head>
+		<title></title>
+		<meta charest="utf-8">
+		<style>
+			div {
+				margin-top: 20px;
+			}
+
+			.beverage{
+				color: red;
+			}
+		</style>
+
+		<script>
+			var coin = 0;
+			document.getElementById('money').innerText = coin;
+
+			function addMoney(amount){
+				this.coin += amount;
+				document.getElementById('money').innerText = coin;
+
+				if(this.coin >= 700){
+					document.getElementById("coffee").style.color = "blue";
+				}
+
+				if(this.coin >= 1000){
+					document.getElementById("bubletea").style.color = "blue";
+				}
+
+				if(this.coin >= 500){
+					document.getElementById("water").style.color = "blue";
+				}
+			}
+
+			function spendMoney(amount){
+				if(amount > this.coin){
+					alert("돈넣고 사먹어 자식아");
+					return false;
+				}
+				this.coin -= amount;
+				document.getElementById('money').innerText = this.coin;
+
+				if(this.coin < 700){
+					document.getElementById("coffee").style.color = "red";
+				}
+
+				if(this.coin < 1000){
+					document.getElementById("bubletea").style.color = "red";
+				}
+
+				if(this.coin < 500){
+					document.getElementById("water").style.color = "red";
+				}
+				return true;
+			}
+
+			function bevClick(bname,amount){
+				if(spendMoney(amount)){
+					alert(bname + "먹어라");
+				}
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<div>
+			<input type="button" id="coffee" class="beverage" value="커피(700원)" onclick="bevClick('커피',700)" 
+			>
+			<input type="button" id="bubletea" class="beverage" value="공차(1000원)" onclick="bevClick('공차',1000)"
+			>
+			<input type="button" id="water" class="beverage" value="물(500원)" onclick="bevClick('물',500)"
+			>
+		</div>
+		
+		<div>
+			<input id="1000" type="button" value="1000원" onclick="addMoney(1000)"
+			>
+			<input id="500" type="button" value="500원" onclick="addMoney(500)"
+			>
+			<input id="100" type="button" value="100원" onclick="addMoney(100)"
+			>
+		</div>
+		
+		<div>
+			현재 금액 : <span id ="money">0</span> 원
+		</div>
+
+	
+	</body>
+</html>
