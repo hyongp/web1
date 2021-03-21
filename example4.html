@@ -1,0 +1,95 @@
+<!doctype html>
+
+<html>
+
+	<head>
+		<title>계산기 만들기</title>
+		<meta charest="utf-8">
+
+		<script>
+			function calculate(){
+				var num1 = parseFloat(document.getElementById("num1").value);
+				var num2 = parseFloat(document.getElementById("num2").value);
+				
+				var operator = document.getElementsByName("operator");
+     		 	var operator_value;
+
+      			for(var i=0; i<operator.length; i++) {
+          			if(operator[i].checked) {
+           				operator_value = operator[i].value;
+          			}
+     			 }
+
+     			 /*var result;
+     			 result = eval(`${num1} ${operator} ${num2}`);
+				*/
+
+     			
+				var result;
+     			 if (operator_value === '+'){
+     			 	result = num1 + num2;
+     			 }
+     			 else if (operator_value === '-'){
+     			 	result = num1 + num2;
+     			 }
+     			 else if (operator_value === '*'){
+     			 	result = num1 * num2;
+     			 }
+     			 else if (operator_value === '/'){
+     			 	result = num1 / num2;
+     			 }
+     			
+
+				document.getElementById("result").value = result;
+
+				return
+			}
+			
+			function reset(){
+				document.getElementById("num1").value = "";
+				document.getElementById("num2").value = "";
+				document.getElementById("result").value = "";
+      			for(var i=0; i<operator.length; i++) {
+          			if(operator[i].checked) {
+           				operator[i].checked = false;
+          			}
+     			 }
+			}
+		</script>
+	</head>
+
+	<body>
+
+		<div>
+			숫자1 : <input type="number" id="num1" name="num1"
+			>
+		</div>
+
+		<div>
+			숫자2 : <input type="number" id="num2" name="num2"
+			>
+		</div>
+
+		<div>
+			연산 : 
+			+ <input type="radio" id="operator" name="operator" value="+">
+			- <input type="radio" id="operator" name="operator" value="-">
+			* <input type="radio" id="operator" name="operator" value="*">
+			/ <input type="radio" id="operator" name="operator" value="/">
+
+		</div>
+
+		<div>
+			결과 : <input type="text" id="result" name="result" value=""
+			>
+		</div>
+
+		<div>
+			<input type="button" name="cal" value="계산" onclick="calculate();"
+			>
+			<input type="button" name="reset" value="지우개" onclick="reset();"
+			>
+		</div>
+
+	</body>
+</html>
